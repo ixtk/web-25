@@ -1,0 +1,57 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("https://res.cloudinary.com/dc2c49xov/image/upload/v1731168775/lego-figurine/xfhz7ladkh9f74p3pv0n.jpg");
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.container {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.result {
+  position: relative;
+}
+
+.result .piece {
+  position: absolute;
+  inset: 0;
+}
+
+.result img {
+  max-width: 400px;
+}
+
+.option-container {
+  max-width: 700px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.option-container img {
+  display: block;
+  max-width: 80px;
+  border-radius: 10px;
+}
+
+button {
+  background-color: rgb(255, 214, 181);
+  padding: 3px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 4px dashed transparent;
+  outline-offset: 4px;
+}
+
+.active {
+  border: 4px dashed rgb(255, 126, 20);
+}
