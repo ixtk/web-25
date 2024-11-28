@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Risque&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: rgb(10, 31, 74);
+  --solid-border: solid var(--primary) 5px;
+}
+
+body {
+  margin: 0;
+  margin-top: 2rem;
+  display: grid;
+  place-items: center;
+  font-family: sans-serif;
+  font-family: "Risque", serif;
+}
+
+input,
+button {
+  font: inherit;
+  border: 0;
+}
+
+.container {
+  display: flex;
+  border: var(--solid-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  border-right: var(--solid-border);
+  text-transform: capitalize;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  min-height: 300px;
+  align-items: flex-end;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.message {
+  background-color: var(--primary);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+.selected {
+  background-color: var(--primary);
+  color: white;
+}
+
+.input-container {
+  display: flex;
+  border-top: var(--solid-border);
+}
+
+.sidebar button {
+  padding: 7px;
+}
+
+button {
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+input {
+  padding: 10px 10px;
+  flex-grow: 1;
+}
+
+.chat {
+  min-width: 320px;
+  overflow-y: auto;
+}
+
+.sidebar {
+  min-width: 150px;
+}
