@@ -1,0 +1,86 @@
+.badge-container {
+  display: flex;
+  column-gap: 8px;
+}
+
+.badge-container span {
+  display: inline-block;
+  color: white;
+  padding: 5px 7px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.new-badge {
+  background-color: var(--primary);
+}
+
+.featured-badge {
+  background-color: var(--secondary-dark);
+}
+
+.details-first-row {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+  font-size: 0.9rem;
+}
+
+.company-img {
+  border-radius: 50%;
+}
+
+.tag-buttons {
+  margin-left: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.tag-buttons button {
+  border: none;
+  cursor: pointer;
+  padding: 7px 9px;
+  border-radius: 3px;
+  color: var(--primary);
+  background-color: var(--bg);
+  font-weight: 700;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.card-container {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.listing-card {
+  border-left: 5px solid transparent;
+}
+
+.featured-listing {
+  border-color: var(--primary);
+}
+
+.company-name {
+  margin: 0;
+}
+
+.bullet-symbol {
+  color: var(--secondary);
+}
+
+.banner-img {
+  width: 100%;
+  max-height: 150px;
+  object-fit: cover;
+}
+
+.listing-card {
+  border-radius: 4px;
+  box-shadow: 0px 15px 20px -5px hsla(189, 82%, 28%, 0.15);
+}
