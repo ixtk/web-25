@@ -5,6 +5,7 @@ import { ProfileControlledInputs } from "./forms/App"
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
+    {/* <MovieWatchlist /> */}
     <ProfileControlledInputs />
   </StrictMode>
 )
