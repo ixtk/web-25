@@ -1,0 +1,59 @@
+@import url(https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css);
+
+body {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  padding: 16px;
+}
+
+legend {
+  font-size: 1.5rem;
+  margin-right: 16px;
+}
+
+form {
+  flex-grow: 1;
+  max-width: 500px;
+}
+
+.user-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+}
+
+.user-card img {
+  max-width: 130px;
+}
+
+.user-card h1 {
+  font-size: 1.5rem;
+  margin-bottom: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 32px;
+}
+
+button {
+  cursor: pointer;
+  font: inherit;
+  align-self: flex-end;
+}
+
+.button-container {
+  display: flex;
+  gap: 16px;
+}
+
+@media screen and (min-width: 550px) {
+  .container {
+    flex-direction: row;
+  }
+
+  .user-card {
+    align-items: center;
+  }
+}
