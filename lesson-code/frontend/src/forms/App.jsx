@@ -3,7 +3,7 @@ import { useState } from "react"
 
 export const ProfileControlledInputs = () => {
   const [name, setName] = useState("")
-  const [age, setAge] = useState("")
+  const [age, setAge] = useState(0)
   const [url, setUrl] = useState(
     "https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"
   )
@@ -29,7 +29,7 @@ export const ProfileControlledInputs = () => {
 
   const resetProfile = () => {
     setName("")
-    setAge("")
+    setAge(0)
     setUrl(
       "https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"
     )
@@ -55,7 +55,18 @@ export const ProfileControlledInputs = () => {
           </div>
           <div>
             <label htmlFor="age">Age</label>
-            <input type="number" value={age} onChange={updateAge} />
+            <input
+              type="number"
+              value={age === 0 ? "" : age}
+              onChange={updateAge}
+            />
+            <button
+              onClick={() => {
+                setAge(age + 5)
+              }}
+            >
+              +5
+            </button>
           </div>
           <div>
             <label htmlFor="avatarUrl">Avatar URL</label>
@@ -74,7 +85,7 @@ export const ProfileControlledInputs = () => {
       <div className="user-card">
         <img src={url} />
         <h1>
-          {name} {age === "" ? "" : `(${age})`}
+          {name} {age === 0 ? "" : `(${age})`}
         </h1>
         {/* {age !== null && <span>({age})</span>} */}
         <p>{about}</p>
