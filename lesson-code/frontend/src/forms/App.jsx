@@ -8,6 +8,7 @@ export const ProfileControlledInputs = () => {
     "https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"
   )
   const [about, setAbout] = useState("")
+  const [favoriteSeason, setFavoriteSeason] = useState("")
 
   const updateName = (event) => {
     console.log(event)
@@ -37,6 +38,11 @@ export const ProfileControlledInputs = () => {
   }
 
   // console.log("Running :)")
+
+  const updateFavoriteSeason = (event) => {
+    console.log(event.target.value)
+    setFavoriteSeason(event.target.value)
+  }
 
   return (
     <div className="container">
@@ -77,6 +83,45 @@ export const ProfileControlledInputs = () => {
             <label htmlFor="about">About</label>
             <textarea value={about} onChange={updateAboutText} />
           </div>
+          <div style={{ marginBottom: "16px" }}>
+            <h4>Favorite season:</h4>
+            <label>
+              Spring{" "}
+              <input
+                type="radio"
+                value="spring"
+                onChange={updateFavoriteSeason}
+                name="season"
+              />
+            </label>
+            <label>
+              Summer{" "}
+              <input
+                type="radio"
+                value="summer"
+                onChange={updateFavoriteSeason}
+                name="season"
+              />
+            </label>
+            <label>
+              Autumn{" "}
+              <input
+                type="radio"
+                value="autumn"
+                onChange={updateFavoriteSeason}
+                name="season"
+              />
+            </label>
+            <label>
+              Winter{" "}
+              <input
+                type="radio"
+                value="winter"
+                onChange={updateFavoriteSeason}
+                name="season"
+              />
+            </label>
+          </div>
           <div className="button-container">
             <button>Save profile</button>
             <button onClick={resetProfile}>Reset all</button>
@@ -90,6 +135,14 @@ export const ProfileControlledInputs = () => {
         </h1>
         {/* {age !== null && <span>({age})</span>} */}
         <p>{about}</p>
+        <h4>
+          Favorite season:
+          {favoriteSeason === "spring" && "🌸"}
+          {favoriteSeason === "summer" && "☀"}
+          {favoriteSeason === "autumn" && "🍂"}
+          {favoriteSeason === "winter" && "❄"}
+        </h4>
+        {/* 🌸 ☀ 🍂 ❄ */}
       </div>
     </div>
   )
