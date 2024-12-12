@@ -1,48 +1,48 @@
-import "./App.css"
-import { useState } from "react"
+import "./App.css";
+import { useState } from "react";
 
 export const ProfileControlledInputs = () => {
-  const [name, setName] = useState("")
-  const [age, setAge] = useState(0)
+  const [name, setName] = useState("");
+  const [age, setAge] = useState(0);
   const [url, setUrl] = useState(
     "https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"
-  )
-  const [about, setAbout] = useState("")
-  const [favoriteSeason, setFavoriteSeason] = useState("")
+  );
+  const [about, setAbout] = useState("");
+  const [favoriteSeason, setFavoriteSeason] = useState("");
 
   const updateName = (event) => {
-    console.log(event)
-    setName(event.target.value)
-  }
+    console.log(event);
+    setName(event.target.value);
+  };
 
   const updateAge = (event) => {
     // console.log(event.target.value, typeof event.target.value)
-    setAge(Number(event.target.value))
-  }
+    setAge(Number(event.target.value));
+  };
 
   const updateAvatarUrl = (event) => {
-    setUrl(event.target.value)
-  }
+    setUrl(event.target.value);
+  };
 
   const updateAboutText = (event) => {
-    setAbout(event.target.value)
-  }
+    setAbout(event.target.value);
+  };
 
   const resetProfile = () => {
-    setName("")
-    setAge(0)
+    setName("");
+    setAge(0);
     setUrl(
       "https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"
-    )
-    setAbout("")
-  }
+    );
+    setAbout("");
+  };
 
   // console.log("Running :)")
 
   const updateFavoriteSeason = (event) => {
-    console.log(event.target.value)
-    setFavoriteSeason(event.target.value)
-  }
+    console.log(event.target.value);
+    setFavoriteSeason(event.target.value);
+  };
 
   return (
     <div className="container">
@@ -62,18 +62,20 @@ export const ProfileControlledInputs = () => {
           </div>
           <div>
             <label htmlFor="age">Age</label>
-            <input
-              type="number"
-              value={age === 0 ? "" : age}
-              onChange={updateAge}
-            />
-            <button
-              onClick={() => {
-                setAge(age + 5)
-              }}
-            >
-              +5
-            </button>
+            <div className="age-container">
+              <input
+                type="number"
+                value={age === 0 ? "" : age}
+                onChange={updateAge}
+              />
+              <button
+                onClick={() => {
+                  setAge(age + 5);
+                }}
+              >
+                +5
+              </button>
+            </div>
           </div>
           <div>
             <label htmlFor="avatarUrl">Avatar URL</label>
@@ -135,15 +137,17 @@ export const ProfileControlledInputs = () => {
         </h1>
         {/* {age !== null && <span>({age})</span>} */}
         <p>{about}</p>
-        <h4>
-          Favorite season:
-          {favoriteSeason === "spring" && "🌸"}
-          {favoriteSeason === "summer" && "☀"}
-          {favoriteSeason === "autumn" && "🍂"}
-          {favoriteSeason === "winter" && "❄"}
-        </h4>
+        {favoriteSeason && (
+          <p>
+            Favorite season:
+            {favoriteSeason === "spring" && "🌸"}
+            {favoriteSeason === "summer" && "☀"}
+            {favoriteSeason === "autumn" && "🍂"}
+            {favoriteSeason === "winter" && "❄"}
+          </p>
+        )}
         {/* 🌸 ☀ 🍂 ❄ */}
       </div>
     </div>
-  )
-}
+  );
+};
