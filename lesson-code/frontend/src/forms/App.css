@@ -2,7 +2,6 @@
 
 body {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  padding: 16px;
 }
 
 legend {
@@ -20,6 +19,8 @@ form {
   flex-direction: column;
   gap: 16px;
   padding: 16px;
+  position: sticky;
+  align-self: center;
 }
 
 .user-card img {
@@ -46,6 +47,17 @@ button {
 .button-container {
   display: flex;
   gap: 16px;
+}
+
+.age-container {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.age-container input {
+  margin: 0;
 }
 
 @media screen and (min-width: 550px) {
