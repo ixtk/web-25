@@ -1,48 +1,59 @@
-import "./App.css";
-import { useState } from "react";
+import "./App.css"
+import { useState } from "react"
 
 export const ProfileControlledInputs = () => {
-  const [name, setName] = useState("");
-  const [age, setAge] = useState(0);
+  const [name, setName] = useState("")
+  const [age, setAge] = useState(0)
   const [url, setUrl] = useState(
     "https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"
-  );
-  const [about, setAbout] = useState("");
-  const [favoriteSeason, setFavoriteSeason] = useState("");
+  )
+  const [about, setAbout] = useState("")
+  const [favoriteSeason, setFavoriteSeason] = useState("")
+  const [hobbies, setHobbies] = useState({
+    biking: false,
+    chess: false,
+    coding: false
+  })
 
   const updateName = (event) => {
-    console.log(event);
-    setName(event.target.value);
-  };
+    console.log(event)
+    setName(event.target.value)
+  }
 
   const updateAge = (event) => {
     // console.log(event.target.value, typeof event.target.value)
-    setAge(Number(event.target.value));
-  };
+    setAge(Number(event.target.value))
+  }
 
   const updateAvatarUrl = (event) => {
-    setUrl(event.target.value);
-  };
+    setUrl(event.target.value)
+  }
 
   const updateAboutText = (event) => {
-    setAbout(event.target.value);
-  };
+    setAbout(event.target.value)
+  }
 
   const resetProfile = () => {
-    setName("");
-    setAge(0);
+    setName("")
+    setAge(0)
     setUrl(
       "https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"
-    );
-    setAbout("");
-  };
+    )
+    setAbout("")
+    setFavoriteSeason("")
+    setHobbies({
+      biking: false,
+      chess: false,
+      coding: false
+    })
+  }
 
   // console.log("Running :)")
 
   const updateFavoriteSeason = (event) => {
-    console.log(event.target.value);
-    setFavoriteSeason(event.target.value);
-  };
+    console.log(event.target.value)
+    setFavoriteSeason(event.target.value)
+  }
 
   return (
     <div className="container">
@@ -70,7 +81,7 @@ export const ProfileControlledInputs = () => {
               />
               <button
                 onClick={() => {
-                  setAge(age + 5);
+                  setAge(age + 5)
                 }}
               >
                 +5
@@ -92,6 +103,7 @@ export const ProfileControlledInputs = () => {
               <input
                 type="radio"
                 value="spring"
+                checked={favoriteSeason === "spring"}
                 onChange={updateFavoriteSeason}
                 name="season"
               />
@@ -101,6 +113,7 @@ export const ProfileControlledInputs = () => {
               <input
                 type="radio"
                 value="summer"
+                checked={favoriteSeason === "summer"}
                 onChange={updateFavoriteSeason}
                 name="season"
               />
@@ -110,6 +123,7 @@ export const ProfileControlledInputs = () => {
               <input
                 type="radio"
                 value="autumn"
+                checked={favoriteSeason === "autumn"}
                 onChange={updateFavoriteSeason}
                 name="season"
               />
@@ -119,8 +133,51 @@ export const ProfileControlledInputs = () => {
               <input
                 type="radio"
                 value="winter"
+                checked={favoriteSeason === "winter"}
                 onChange={updateFavoriteSeason}
                 name="season"
+              />
+            </label>
+          </div>
+          <div style={{ marginBottom: "16px" }}>
+            <h4>Hobbies</h4>
+            <label>
+              Biking{" "}
+              <input
+                type="checkbox"
+                checked={hobbies.biking}
+                onChange={() => {
+                  setHobbies({
+                    ...hobbies,
+                    biking: !hobbies.biking
+                  })
+                }}
+              />
+            </label>
+            <label>
+              Chess{" "}
+              <input
+                type="checkbox"
+                checked={hobbies.chess}
+                onChange={() => {
+                  setHobbies({
+                    ...hobbies,
+                    chess: !hobbies.chess
+                  })
+                }}
+              />
+            </label>
+            <label>
+              Coding{" "}
+              <input
+                type="checkbox"
+                checked={hobbies.coding}
+                onChange={() => {
+                  setHobbies({
+                    ...hobbies,
+                    coding: !hobbies.coding
+                  })
+                }}
               />
             </label>
           </div>
@@ -138,16 +195,16 @@ export const ProfileControlledInputs = () => {
         {/* {age !== null && <span>({age})</span>} */}
         <p>{about}</p>
         {favoriteSeason && (
-          <p>
+          <h4>
             Favorite season:
             {favoriteSeason === "spring" && "🌸"}
             {favoriteSeason === "summer" && "☀"}
             {favoriteSeason === "autumn" && "🍂"}
             {favoriteSeason === "winter" && "❄"}
-          </p>
+          </h4>
         )}
         {/* 🌸 ☀ 🍂 ❄ */}
       </div>
     </div>
-  );
-};
+  )
+}
