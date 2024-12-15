@@ -15,6 +15,7 @@ export const ProfileControlledInputs = () => {
     coding: false,
     reading: false
   })
+  const [favoriteSnack, setFavoriteSnack] = useState("")
 
   const likedHobbies = Object.keys(hobbies)
     .filter((hobby) => {
@@ -54,6 +55,7 @@ export const ProfileControlledInputs = () => {
       chess: false,
       reading: false
     })
+    setFavoriteSnack("")
   }
 
   // console.log("Running :)")
@@ -147,6 +149,17 @@ export const ProfileControlledInputs = () => {
             <h4>Hobbies</h4>
             {hobbiesCheckboxes}
           </div>
+          <div>
+            <h4>Favorte stack</h4>
+            <select
+              value={favoriteSnack}
+              onChange={(event) => setFavoriteSnack(event.target.value)}
+            >
+              <option value="">---</option>
+              <option value="pizza">Pizza</option>
+              <option value="chocolate">Chocolate</option>
+            </select>
+          </div>
           <div className="button-container">
             <button>Save profile</button>
             <button onClick={resetProfile}>Reset all</button>
@@ -171,6 +184,7 @@ export const ProfileControlledInputs = () => {
         )}
 
         {likedHobbies && <h4>Hobbies: {likedHobbies}</h4>}
+        {favoriteSnack && <h4>Favorite snack: {favoriteSnack}</h4>}
       </div>
     </div>
   )
