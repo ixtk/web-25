@@ -12,8 +12,15 @@ export const ProfileControlledInputs = () => {
   const [hobbies, setHobbies] = useState({
     biking: false,
     chess: false,
-    coding: false
+    coding: false,
+    reading: false
   })
+
+  const likedHobbies = Object.keys(hobbies)
+    .filter((hobby) => {
+      return hobbies[hobby]
+    }) // Get keys where value is true
+    .join(", ") // Join the hobbies into a string separated by commas
 
   const updateName = (event) => {
     console.log(event)
@@ -44,7 +51,8 @@ export const ProfileControlledInputs = () => {
     setHobbies({
       biking: false,
       coding: false,
-      chess: false
+      chess: false,
+      reading: false
     })
   }
 
@@ -54,6 +62,41 @@ export const ProfileControlledInputs = () => {
     console.log(event.target.value)
     setFavoriteSeason(event.target.value)
   }
+
+  const favoriteSeasonInputs = ["spring", "summer", "autumn", "winter"].map(
+    (season) => {
+      return (
+        <label key={season}>
+          {season}{" "}
+          <input
+            type="radio"
+            value={season}
+            checked={favoriteSeason === season}
+            onChange={updateFavoriteSeason}
+            name="season"
+          />
+        </label>
+      )
+    }
+  )
+
+  const hobbiesCheckboxes = Object.keys(hobbies).map((hobby) => {
+    return (
+      <label key={hobby}>
+        {hobby}{" "}
+        <input
+          type="checkbox"
+          checked={hobbies[hobby]}
+          onChange={() => {
+            setHobbies({
+              ...hobbies,
+              [hobby]: !hobbies[hobby]
+            })
+          }}
+        />
+      </label>
+    )
+  })
 
   return (
     <div className="container">
@@ -98,88 +141,11 @@ export const ProfileControlledInputs = () => {
           </div>
           <div style={{ marginBottom: "16px" }}>
             <h4>Favorite season:</h4>
-            <label>
-              Spring{" "}
-              <input
-                type="radio"
-                value="spring"
-                checked={favoriteSeason === "spring"}
-                onChange={updateFavoriteSeason}
-                name="season"
-              />
-            </label>
-            <label>
-              Summer{" "}
-              <input
-                type="radio"
-                value="summer"
-                checked={favoriteSeason === "summer"}
-                onChange={updateFavoriteSeason}
-                name="season"
-              />
-            </label>
-            <label>
-              Autumn{" "}
-              <input
-                type="radio"
-                value="autumn"
-                checked={favoriteSeason === "autumn"}
-                onChange={updateFavoriteSeason}
-                name="season"
-              />
-            </label>
-            <label>
-              Winter{" "}
-              <input
-                type="radio"
-                value="winter"
-                checked={favoriteSeason === "winter"}
-                onChange={updateFavoriteSeason}
-                name="season"
-              />
-            </label>
+            {favoriteSeasonInputs}
           </div>
           <div>
             <h4>Hobbies</h4>
-            <label>
-              Biking{" "}
-              <input
-                type="checkbox"
-                checked={hobbies.biking}
-                onChange={() => {
-                  setHobbies({
-                    ...hobbies,
-                    biking: !hobbies.biking
-                  })
-                }}
-              />
-            </label>
-            <label>
-              Chess{" "}
-              <input
-                type="checkbox"
-                checked={hobbies.chess}
-                onChange={() => {
-                  setHobbies({
-                    ...hobbies,
-                    chess: !hobbies.chess
-                  })
-                }}
-              />
-            </label>
-            <label>
-              Coding{" "}
-              <input
-                type="checkbox"
-                checked={hobbies.coding}
-                onChange={() => {
-                  setHobbies({
-                    ...hobbies,
-                    coding: !hobbies.coding
-                  })
-                }}
-              />
-            </label>
+            {hobbiesCheckboxes}
           </div>
           <div className="button-container">
             <button>Save profile</button>
@@ -203,6 +169,8 @@ export const ProfileControlledInputs = () => {
             {favoriteSeason === "winter" && "❄"}
           </h4>
         )}
+
+        {likedHobbies && <h4>Hobbies: {likedHobbies}</h4>}
       </div>
     </div>
   )
