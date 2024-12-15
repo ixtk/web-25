@@ -15,6 +15,7 @@ export const ProfileControlledInputs = () => {
     coding: false,
     reading: false
   })
+  const [favoriteSnack, setFavoriteSnack] = useState("")
 
   const likedHobbies = Object.keys(hobbies)
     .filter((hobby) => {
@@ -55,6 +56,7 @@ export const ProfileControlledInputs = () => {
       coding: false,
       reading: false
     })
+    setFavoriteSnack("")
   }
 
   // console.log("Running :)")
@@ -68,7 +70,7 @@ export const ProfileControlledInputs = () => {
     (season) => {
       return (
         <label key={season}>
-          {season}{" "}
+          <span>{season}</span>{" "}
           <input
             type="radio"
             value={season}
@@ -84,7 +86,7 @@ export const ProfileControlledInputs = () => {
   const hobbiesCheckboxes = Object.keys(hobbies).map((hobby) => {
     return (
       <label key={hobby}>
-        {hobby}{" "}
+        <span>{hobby}</span>{" "}
         <input
           type="checkbox"
           checked={hobbies[hobby]}
@@ -148,6 +150,17 @@ export const ProfileControlledInputs = () => {
             <h4>Hobbies</h4>
             {hobbiesCheckboxes}
           </div>
+          <div>
+            <h4>Favorite snack</h4>
+            <select
+              value={favoriteSnack}
+              onChange={(event) => setFavoriteSnack(event.target.value)}
+            >
+              <option value="">--Please choose an option--</option>
+              <option value="pizza">Pizza</option>
+              <option value="chocolate">Chocolate</option>
+            </select>
+          </div>
           <div className="button-container">
             <button>Save profile</button>
             <button onClick={resetProfile}>Reset all</button>
@@ -171,6 +184,7 @@ export const ProfileControlledInputs = () => {
           </h4>
         )}
         {likedHobbies && <h4>User likes: {likedHobbies}</h4>}
+        {favoriteSnack && <h4>Favorite snack: {favoriteSnack}</h4>}
       </div>
     </div>
   )

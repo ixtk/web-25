@@ -49,6 +49,10 @@ button {
   gap: 16px;
 }
 
+label span {
+  text-transform: capitalize;
+}
+
 .age-container {
   display: flex;
   gap: 16px;
