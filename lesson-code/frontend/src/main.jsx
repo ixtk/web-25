@@ -1,12 +1,13 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import { StrictMode } from "react"
+import { createRoot } from "react-dom/client"
 // import { MovieWatchlist } from "./movie-watchlist/App"
-import { ProfileControlledInputs } from "./forms/App";
-import "./App.css";
+// import { ProfileControlledInputs } from "./forms/App";
+import { ProfileControlledInputs } from "./forms/AppWithOneState"
+import "./App.css"
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     {/* <MovieWatchlist /> */}
     <ProfileControlledInputs />
   </StrictMode>
-);
+)

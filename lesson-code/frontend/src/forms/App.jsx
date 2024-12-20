@@ -173,18 +173,19 @@ export const ProfileControlledInputs = () => {
         </h1>
         {/* {age !== null && <span>({age})</span>} */}
         <p>{about}</p>
-        {favoriteSeason && (
-          <h4>
-            Favorite season:
-            {favoriteSeason === "spring" && "🌸"}
-            {favoriteSeason === "summer" && "☀"}
-            {favoriteSeason === "autumn" && "🍂"}
-            {favoriteSeason === "winter" && "❄"}
-          </h4>
-        )}
-
-        {likedHobbies && <h4>Hobbies: {likedHobbies}</h4>}
-        {favoriteSnack && <h4>Favorite snack: {favoriteSnack}</h4>}
+        <ul>
+          {favoriteSeason && (
+            <li>
+              Favorite season:
+              {favoriteSeason === "spring" && "🌸"}
+              {favoriteSeason === "summer" && "☀"}
+              {favoriteSeason === "autumn" && "🍂"}
+              {favoriteSeason === "winter" && "❄"}
+            </li>
+          )}
+          {likedHobbies && <li>Hobbies: {likedHobbies}</li>}
+          {favoriteSnack && <li>Favorite snack: {favoriteSnack}</li>}
+        </ul>
       </div>
     </div>
   )
