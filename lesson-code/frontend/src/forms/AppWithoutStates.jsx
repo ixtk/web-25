@@ -41,10 +41,21 @@ export const ProfileWithoutStates = () => {
 
     console.log(formData.getAll("hobbies"))
 
-    setForm({
+    const formDataAsObj = {
       ...Object.fromEntries(formData.entries()),
       hobbies: formData.getAll("hobbies")
-    })
+    }
+
+    if (formDataAsObj.name === "") {
+      console.log("Username field is required")
+    } else if (formDataAsObj.name.length < 3) {
+      console.log("Username must be at least 3 characters")
+    } else {
+      setForm({
+        ...Object.fromEntries(formData.entries()),
+        hobbies: formData.getAll("hobbies")
+      })
+    }
 
     // console.log(formData.get("biking"))
     // console.log(formData.get("chess"))
@@ -67,7 +78,7 @@ export const ProfileWithoutStates = () => {
           <legend>Create Profile</legend>
           <div>
             <label htmlFor="name">Name</label>
-            <input id="name" name="name" type="text" />
+            <input id="name" name="name" placeholder="john doe" type="text" />
           </div>
           <div>
             <label htmlFor="age">Age</label>
