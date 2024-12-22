@@ -1,6 +1,19 @@
 import "./App.css"
+import { useState } from "react"
 
 export const ProfileWithoutStates = () => {
+  const [form, setForm] = useState({
+    name: "",
+    age: 0,
+    url: "",
+    about: "",
+    favoriteSeason: "",
+    hobbies: [],
+    favoriteSnack: ""
+  })
+
+  const likedHobbies = form.hobbies.join(", ")
+
   const favoriteSeasonInputs = ["spring", "summer", "autumn", "winter"].map(
     (season) => {
       return (
@@ -15,7 +28,8 @@ export const ProfileWithoutStates = () => {
   const hobbiesCheckboxes = ["biking", "coding", "chess"].map((hobby) => {
     return (
       <label key={hobby}>
-        <span>{hobby}</span> <input type="checkbox" name={hobby} />
+        <span>{hobby}</span>{" "}
+        <input type="checkbox" value={hobby} name="hobbies" />
       </label>
     )
   })
@@ -23,14 +37,27 @@ export const ProfileWithoutStates = () => {
   const saveProfile = (event) => {
     event.preventDefault()
 
-    // console.log(event.target)
     const formData = new FormData(event.target)
 
-    console.log(
-      formData.get("name"),
-      formData.get("age"),
-      formData.get("season")
-    )
+    console.log(formData.getAll("hobbies"))
+
+    setForm({
+      ...Object.fromEntries(formData.entries()),
+      hobbies: formData.getAll("hobbies")
+    })
+
+    // console.log(formData.get("biking"))
+    // console.log(formData.get("chess"))
+    // console.log(formData.get("coding"))
+
+    // console.log(formData.getAll("hobbies"))
+
+    // console.log(
+    //   formData.get("name"),
+    //   formData.get("age"),
+    //   formData.get("season"),
+    //   formData.get("favoriteSnack")
+    // )
   }
 
   return (
@@ -50,7 +77,11 @@ export const ProfileWithoutStates = () => {
           </div>
           <div>
             <label htmlFor="avatarUrl">Avatar URL</label>
-            <input type="url" name="url" />
+            <input
+              defaultValue="https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"
+              type="url"
+              name="url"
+            />
           </div>
           <div>
             <label htmlFor="about">About</label>
@@ -74,31 +105,29 @@ export const ProfileWithoutStates = () => {
           </div>
           <div className="button-container">
             <button type="submit">Save profile</button>
-            <button>Reset all</button>
+            <button type="reset">Reset all</button>
           </div>
         </fieldset>
       </form>
+      <div className="user-card">
+        <img src={form.url} />
+        <h1>
+          {form.name} {form.age === 0 ? "" : `(${form.age})`}
+        </h1>
+        {/* {age !== null && <span>({age})</span>} */}
+        <p>{form.about}</p>
+        {form.favoriteSeason && (
+          <h4>
+            Favorite season:
+            {form.favoriteSeason === "spring" && "🌸"}
+            {form.favoriteSeason === "summer" && "☀"}
+            {form.favoriteSeason === "autumn" && "🍂"}
+            {form.favoriteSeason === "winter" && "❄"}
+          </h4>
+        )}
+        {likedHobbies && <h4>User likes: {likedHobbies}</h4>}
+        {form.favoriteSnack && <h4>Favorite snack: {form.favoriteSnack}</h4>}
+      </div>
     </div>
   )
 }
-
-/*
-      <div className="user-card">
-        <img src={url} />
-        <h1>
-          {name} {age === 0 ? "" : `(${age})`}
-        </h1>
-        {/* {age !== null && <span>({age})</span>} */
-//   <p>{about}</p>
-//   {favoriteSeason && (
-//     <h4>
-//       Favorite season:
-//       {favoriteSeason === "spring" && "🌸"}
-//       {favoriteSeason === "summer" && "☀"}
-//       {favoriteSeason === "autumn" && "🍂"}
-//       {favoriteSeason === "winter" && "❄"}
-//     </h4>
-//   )}
-//   {likedHobbies && <h4>User likes: {likedHobbies}</h4>}
-//   {favoriteSnack && <h4>Favorite snack: {favoriteSnack}</h4>}
-// </div>
