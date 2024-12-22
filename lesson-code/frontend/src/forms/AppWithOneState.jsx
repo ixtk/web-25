@@ -47,17 +47,12 @@ export const ProfileControlledInputs = () => {
         ...form,
         hobbies: {
           ...form.hobbies,
-          [name]: !form.hobbies[name] // or checked
+          [name]: checked // !form.hobbies[name]
         }
       })
     }
 
-    // console.log(
-    //   event.target.value,
-    //   event.target.checked,
-    //   event.target.type,
-    //   event.target.name
-    // )
+    console.log(value, checked, type, name)
   }
 
   const favoriteSeasonInputs = ["spring", "summer", "autumn", "winter"].map(
@@ -119,7 +114,10 @@ export const ProfileControlledInputs = () => {
               />
               <button
                 onClick={() => {
-                  // setAge(age + 5)
+                  setForm({
+                    ...form,
+                    age: form.age + 5
+                  })
                 }}
               >
                 +5
