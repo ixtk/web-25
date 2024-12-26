@@ -1,28 +1,18 @@
+import { useState } from "react"
 import "./App.css"
 
 export const ProfileUncontrolledInputs = () => {
-  // const likedHobbies = Object.keys(hobbies)
-  //   .filter((hobby) => {
-  //     return hobbies[hobby]
-  //   }) // Get keys where value is true
-  //   .join(", ") // Join the hobbies into a string separated by commas
+  const [profile, setProfile] = useState({
+    name: "",
+    age: "",
+    url: "",
+    about: "",
+    favoriteSeason: "",
+    hobbies: [],
+    favoriteSnack: ""
+  })
 
-  const resetProfile = () => {
-    // setName("")
-    // setAge(0)
-    // setUrl(
-    //   "https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"
-    // )
-    // setAbout("")
-    // setFavoriteSeason("")
-    // setHobbies({
-    //   biking: false,
-    //   coding: false,
-    //   chess: false,
-    //   reading: false
-    // })
-    // setFavoriteSnack("")
-  }
+  const likedHobbies = profile.hobbies.join(", ")
 
   const favoriteSeasonInputs = ["spring", "summer", "autumn", "winter"].map(
     (season) => {
@@ -60,6 +50,11 @@ export const ProfileUncontrolledInputs = () => {
       hobbies: formData.getAll("hobbies")
     })
 
+    setProfile({
+      ...Object.fromEntries(formData.entries()),
+      hobbies: formData.getAll("hobbies")
+    })
+
     // console.log(
     //   formData.get("age"),
     //   formData.get("name"),
@@ -92,7 +87,11 @@ export const ProfileUncontrolledInputs = () => {
           </div>
           <div>
             <label htmlFor="avatarUrl">Avatar URL</label>
-            <input type="url" name="url" />
+            <input
+              defaultValue="https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"
+              type="url"
+              name="url"
+            />
           </div>
           <div>
             <label htmlFor="about">About</label>
@@ -116,11 +115,33 @@ export const ProfileUncontrolledInputs = () => {
           </div>
           <div className="button-container">
             <button>Save profile</button>
-            <button>Reset all</button>
+            <button type="reset">Reset all</button>
           </div>
         </fieldset>
       </form>
-      <div className="user-card"></div>
+      <div className="user-card">
+        <img src={profile.url} />
+        <h1>
+          {profile.name} {profile.age === 0 ? "" : `(${profile.age})`}
+        </h1>
+        {profile.age !== null && <span>({profile.age})</span>}
+        <p>{profile.about}</p>
+        <ul>
+          {profile.favoriteSeason && (
+            <li>
+              Favorite season:
+              {profile.favoriteSeason === "spring" && "🌸"}
+              {profile.favoriteSeason === "summer" && "☀"}
+              {profile.favoriteSeason === "autumn" && "🍂"}
+              {profile.favoriteSeason === "winter" && "❄"}
+            </li>
+          )}
+          {likedHobbies && <li>Hobbies: {likedHobbies}</li>}
+          {profile.favoriteSnack && (
+            <li>Favorite snack: {profile.favoriteSnack}</li>
+          )}
+        </ul>
+      </div>
     </div>
   )
 }
