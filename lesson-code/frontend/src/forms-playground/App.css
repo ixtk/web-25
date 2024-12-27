@@ -1,0 +1,12 @@
+@import url(https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css);
+
+.tag {
+  padding: 5px 8px;
+  border: 2px solid white;
+  border-radius: 12px;
+}
+
+.tag-container {
+  display: flex;
+  gap: 8px;
+}
