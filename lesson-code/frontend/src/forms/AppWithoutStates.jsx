@@ -11,6 +11,9 @@ export const ProfileWithoutStates = () => {
     hobbies: [],
     favoriteSnack: ""
   })
+  const [usernameError, setUsernameError] = useState(null)
+  const [ageError, setAgeError] = useState(null)
+  const [aboutError, setAboutError] = useState(null)
 
   const likedHobbies = form.hobbies.join(", ")
 
@@ -37,19 +40,28 @@ export const ProfileWithoutStates = () => {
   const saveProfile = (event) => {
     event.preventDefault()
 
+    setAgeError(null)
+    setUsernameError(null)
+
     const formData = new FormData(event.target)
 
-    console.log(formData.getAll("hobbies"))
+    // console.log(formData.getAll("hobbies"))
 
     const formDataAsObj = {
       ...Object.fromEntries(formData.entries()),
       hobbies: formData.getAll("hobbies")
     }
 
+    // console.log(formDataAsObj)
+
     if (formDataAsObj.name === "") {
-      console.log("Username field is required")
+      setUsernameError("Username field is required")
     } else if (formDataAsObj.name.length < 3) {
-      console.log("Username must be at least 3 characters")
+      setUsernameError("Username must be at least 3 characters")
+    } else if (formDataAsObj.age < 18 || formDataAsObj.age > 100) {
+      setAgeError("Age must be between 18-100")
+    } else if (formDataAsObj.about.length < 10) {
+      setAboutError("About text must be min. 10 characters")
     } else {
       setForm({
         ...Object.fromEntries(formData.entries()),
@@ -57,6 +69,7 @@ export const ProfileWithoutStates = () => {
       })
     }
 
+    // console.log(usernameError)
     // console.log(formData.get("biking"))
     // console.log(formData.get("chess"))
     // console.log(formData.get("coding"))
@@ -71,6 +84,19 @@ export const ProfileWithoutStates = () => {
     // )
   }
 
+  const validateUsername = (event) => {
+    if (event.target.value === "") {
+      setUsernameError("Username field is required")
+    } else if (event.target.value.length < 3) {
+      setUsernameError("Username must be at least 3 characters")
+    } else if (event.target.value.length > 20) {
+      setUsernameError("Username must be at most 20 characters")
+    } else {
+      setUsernameError("")
+    }
+    // console.log("Running!", event.target.value)
+  }
+
   return (
     <div className="container">
       <form onSubmit={saveProfile}>
@@ -78,12 +104,23 @@ export const ProfileWithoutStates = () => {
           <legend>Create Profile</legend>
           <div>
             <label htmlFor="name">Name</label>
-            <input id="name" name="name" placeholder="john doe" type="text" />
+            <input
+              id="name"
+              name="name"
+              // onBlur={validateUsername}
+              onChange={validateUsername}
+              placeholder="john doe"
+              type="text"
+            />
+            {usernameError && (
+              <span style={{ color: "red" }}>{usernameError}</span>
+            )}
           </div>
           <div>
             <label htmlFor="age">Age</label>
             <div className="age-container">
               <input type="number" name="age" />
+              {ageError && <span style={{ color: "red" }}>{ageError}</span>}
             </div>
           </div>
           <div>
@@ -97,6 +134,7 @@ export const ProfileWithoutStates = () => {
           <div>
             <label htmlFor="about">About</label>
             <textarea name="about" />
+            {aboutError && <span style={{ color: "red" }}>{aboutError}</span>}
           </div>
           <div style={{ marginBottom: "16px" }}>
             <h4>Favorite season:</h4>
