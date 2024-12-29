@@ -11,6 +11,9 @@ export const ProfileUncontrolledInputs = () => {
     hobbies: [],
     favoriteSnack: ""
   })
+  // const [formErrors, setFormErrors] = useState({ name: "", age: "" })
+  const [nameError, setNameError] = useState("")
+  const [ageError, setAgeError] = useState("")
 
   const likedHobbies = profile.hobbies.join(", ")
 
@@ -45,15 +48,40 @@ export const ProfileUncontrolledInputs = () => {
 
     // console.log(Object.fromEntries(formData.entries()))
 
-    console.log({
-      ...Object.fromEntries(formData.entries()),
-      hobbies: formData.getAll("hobbies")
-    })
+    setAgeError("")
+    setNameError("")
 
-    setProfile({
+    const formDataAsObj = {
       ...Object.fromEntries(formData.entries()),
       hobbies: formData.getAll("hobbies")
-    })
+    }
+
+    console.log(formDataAsObj)
+    // console.log(18 <= Number(formDataAsObj.age) < 100)
+
+    let valid = true
+    if (formDataAsObj.name.length === 0) {
+      setNameError("Name is required")
+      valid = false
+      // console.log("Name is required")
+    } else if (formDataAsObj.name.length < 3) {
+      setNameError("Minimum 3 characters")
+      valid = false
+      console.log("Minimum 3 characters")
+    }
+
+    if (Number(formDataAsObj.age) < 18 || Number(formDataAsObj.age) > 100) {
+      valid = false
+      setAgeError("Age must be between 18-100")
+      console.log("Age must be between 18-100")
+    }
+
+    if (valid) {
+      setProfile({
+        ...Object.fromEntries(formData.entries()),
+        hobbies: formData.getAll("hobbies")
+      })
+    }
 
     // console.log(
     //   formData.get("age"),
@@ -63,6 +91,18 @@ export const ProfileUncontrolledInputs = () => {
     // )
   }
 
+  const validateName = (event) => {
+    // console.log("Running!")
+    setNameError("")
+    if (event.target.value.length === 0) {
+      setNameError("Name is required")
+    } else if (event.target.value.length < 3) {
+      setNameError("Minimum 3 characters")
+    }
+  }
+
+  // onSubmit, onBlur, onChange
+
   return (
     <div className="container">
       <form onSubmit={saveProfile}>
@@ -70,12 +110,24 @@ export const ProfileUncontrolledInputs = () => {
           <legend>Create Profile</legend>
           <div>
             <label htmlFor="name">Name</label>
-            <input id="name" type="text" name="name" />
+            <input
+              id="name"
+              type="text"
+              name="name"
+              onBlur={validateName}
+              // onChange={validateName}
+            />
+            {nameError !== "" && (
+              <span style={{ color: "red" }}>{nameError}</span>
+            )}
           </div>
           <div>
             <label htmlFor="age">Age</label>
             <div className="age-container">
               <input type="number" name="age" />
+              {ageError !== "" && (
+                <span style={{ color: "red" }}>{ageError}</span>
+              )}
               <button
               // onClick={() => {
               //   setAge(age + 5)
