@@ -1,10 +1,10 @@
 import "./App.css"
-import { SelectOther } from "./SelectOther"
+import { TagList } from "./TagList"
 
 export const FormsPlayground = () => {
   return (
     <div>
-      <SelectOther />
+      <TagList />
     </div>
   )
 }
