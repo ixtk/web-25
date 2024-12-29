@@ -1,5 +1,10 @@
-import "./App.css";
+import "./App.css"
+import { SelectOther } from "./SelectOther"
 
 export const FormsPlayground = () => {
-  return <div></div>;
-};
+  return (
+    <div>
+      <SelectOther />
+    </div>
+  )
+}
