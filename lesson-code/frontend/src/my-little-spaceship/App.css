@@ -1,0 +1,90 @@
+@import url(https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css);
+@import url("https://fonts.googleapis.com/css2?family=Acme&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --pico-form-element-spacing-vertical: 5px;
+  --pico-form-element-spacing-horizontal: 15px;
+  --pico-spacing: 0px;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 32px 0;
+  /* padding: 16px; */
+}
+
+.result {
+  max-width: 500px;
+  display: block;
+  margin: 1rem auto;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "name color"
+    "shape material"
+    "background style"
+    "submit submit";
+  gap: 16px;
+  max-width: 600px;
+  margin: 16px auto;
+}
+
+form label {
+  margin-bottom: 5px;
+}
+
+button.color {
+  border: none;
+  width: 40px;
+  height: 40px;
+  margin-right: 8px;
+}
+
+.error {
+  color: red;
+}
+
+.name {
+  grid-area: name;
+}
+
+.material {
+  grid-area: material;
+}
+
+.color {
+  grid-area: color;
+}
+
+.style {
+  grid-area: style;
+}
+
+button[type="submit"] {
+  grid-area: submit;
+  /* max-width: 200px;
+  margin: 30px auto; */
+}
+
+.background {
+  grid-area: background;
+}
+
+.error {
+  font-size: 0.8em;
+}
+
+h1,
+button {
+  text-align: center;
+  font-family: "Acme", sans-serif;
+  letter-spacing: 1px;
+}
