@@ -61,6 +61,19 @@ export const Spaceship = () => {
             </label>
           </div>
         </div>
+        <div className="color">
+          <label>Color</label>
+          {colors.map((col) => {
+            return (
+              <button
+                className="color"
+                type="button"
+                style={{ backgroundColor: col }}
+                key={col}
+              ></button>
+            )
+          })}
+        </div>
       </form>
     </div>
   )

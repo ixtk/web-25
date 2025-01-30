@@ -1,10 +1,10 @@
 import { useState } from "react"
-import "./App.css";
+import "./App.css"
 
 export const GameSettings = () => {
   const [gameSettings, setGameSettings] = useState({
-    username: "",
-    difficulty: "medium",
+    username: "Guest",
+    difficulty: "hard",
     autoSave: false,
     volumeLevel: 2
   })
@@ -55,7 +55,7 @@ export const GameSettings = () => {
   }
 
   if (gameStarted) {
-    return <h1>Joining as {gameSettings.username || "Guest"}</h1>
+    return <h1>Joining as {gameSettings.username}</h1>
   }
 
   return (
@@ -68,7 +68,12 @@ export const GameSettings = () => {
         <div>
           <label>
             <span>Username</span>
-            <input name="username" type="text" onChange={handleChange} />
+            <input
+              // defaultValue={gameSettings.username}
+              name="username"
+              type="text"
+              onChange={handleChange}
+            />
           </label>
         </div>
         <div className="difficulty-options">
@@ -82,8 +87,8 @@ export const GameSettings = () => {
             />
             Easy
           </label>
-
           <label>
+            {/* setDifficulty("") */}
             <input
               type="radio"
               name="difficulty"
