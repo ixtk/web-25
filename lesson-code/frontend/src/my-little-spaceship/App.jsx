@@ -12,7 +12,56 @@ export const Spaceship = () => {
 
   return (
     <div>
-      <h1>Hello World 🌍</h1>
+      <h1>My Little Spaceship</h1>
+      <form>
+        {/* ctrl + / */}
+        <div className="name">
+          <label htmlFor="name">Name</label>
+          <input type="text" placeholder="Enter spaceship name" />
+        </div>
+        <div className="shape">
+          <label>Shape</label>
+          <div>
+            <label>
+              <input type="radio" name="shape" />
+              Saucer
+            </label>
+            <label>
+              <input type="radio" name="shape" />
+              Rocket
+            </label>
+            <label>
+              <input type="radio" name="shape" />
+              Sphere
+            </label>
+            <label>
+              <input type="radio" name="shape" />
+              Pyramid
+            </label>
+          </div>
+        </div>
+        <div className="background">
+          <label htmlFor="">Background elements</label>
+          <div>
+            <label>
+              <input type="checkbox" />
+              Nebula cluds
+            </label>
+            <label>
+              <input type="checkbox" />
+              Asteroid fields
+            </label>
+            <label>
+              <input type="checkbox" />
+              Planets visible
+            </label>
+            <label>
+              <input type="checkbox" />
+              Stars
+            </label>
+          </div>
+        </div>
+      </form>
     </div>
   )
 }
