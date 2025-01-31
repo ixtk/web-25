@@ -3,10 +3,10 @@ import "./App.css"
 
 export const GameSettings = () => {
   const [gameSettings, setGameSettings] = useState({
-    username: "",
+    username: "Guest",
     difficulty: "hard",
     autoSave: false,
-    volumeLevel: 2
+    volumeLevel: 3
   })
   const [gameStarted, setGameStarted] = useState(false)
 
@@ -55,7 +55,7 @@ export const GameSettings = () => {
   }
 
   if (gameStarted) {
-    return <h1>Joining as {gameSettings.username || "Guest"}</h1>
+    return <h1>Joining as {gameSettings.username}</h1>
   }
 
   return (
@@ -72,7 +72,22 @@ export const GameSettings = () => {
           </label>
         </div>
         <div className="difficulty-options">
-          <label>
+          {["easy", "medium", "hard"].map((difficulty) => {
+            return (
+              <label key={difficulty}>
+                <input
+                  type="radio"
+                  name="difficulty"
+                  value={difficulty}
+                  defaultChecked={gameSettings.difficulty === difficulty}
+                  onChange={handleChange}
+                />
+                {difficulty}
+              </label>
+            )
+          })}
+
+          {/* <label>
             <input
               type="radio"
               name="difficulty"
@@ -101,7 +116,7 @@ export const GameSettings = () => {
               onChange={handleChange}
             />
             Hard
-          </label>
+          </label> */}
         </div>
         <div>
           <label>
