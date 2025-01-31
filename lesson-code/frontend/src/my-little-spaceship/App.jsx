@@ -1,4 +1,5 @@
 import "./App.css"
+import { useFormik } from "formik"
 
 export const Spaceship = () => {
   const shapes = ["saucer", "rocket", "sphere", "pyramid"]
@@ -6,6 +7,19 @@ export const Spaceship = () => {
   const colors = ["red", "blue", "purple", "orange"]
   const styles = ["illustration", "cartoonish", "pixelArt", "scifi"]
   const backgroundElements = ["nebula", "asteroids", "planets", "stars"]
+
+  const spaceshipForm = useFormik({
+    initialValues: {
+      spaceshipName: "",
+      shape: "",
+      color: "",
+      style: "",
+      material: "",
+      backgroundElements: []
+    }
+  })
+
+  console.log(spaceshipForm.values)
 
   // classNames for container divs:
   // name, color, shape, material, style, background
@@ -16,7 +30,12 @@ export const Spaceship = () => {
       <form>
         <div className="name">
           <label htmlFor="name">Name</label>
-          <input id="name" type="text" />
+          <input
+            id="name"
+            type="text"
+            name="spaceshipName"
+            onChange={spaceshipForm.handleChange}
+          />
         </div>
         <div className="shape">
           <label>Shape</label>
@@ -24,7 +43,12 @@ export const Spaceship = () => {
             {shapes.map((shape) => {
               return (
                 <label key={shape}>
-                  <input type="radio" name="shape" />
+                  <input
+                    type="radio"
+                    value={shape}
+                    onChange={spaceshipForm.handleChange}
+                    name="shape"
+                  />
                   {shape}
                 </label>
               )
@@ -37,7 +61,12 @@ export const Spaceship = () => {
             {backgroundElements.map((background) => {
               return (
                 <label key={background}>
-                  <input type="checkbox" name={background} />
+                  <input
+                    type="checkbox"
+                    value={background}
+                    name="backgroundElements"
+                    onChange={spaceshipForm.handleChange}
+                  />
                   {background}
                 </label>
               )
@@ -64,7 +93,12 @@ export const Spaceship = () => {
             {materials.map((material) => {
               return (
                 <label key={material}>
-                  <input type="radio" name="material" />
+                  <input
+                    type="radio"
+                    name="material"
+                    value={material}
+                    onChange={spaceshipForm.handleChange}
+                  />
                   {material}
                 </label>
               )
@@ -73,7 +107,7 @@ export const Spaceship = () => {
         </div>
         <div className="style">
           <label>Style</label>
-          <select name="style">
+          <select name="style" onChange={spaceshipForm.handleChange}>
             <option value="">---</option>
             <option value="illustration">Illustration</option>
             <option value="cartoonish">Cartoonish</option>
