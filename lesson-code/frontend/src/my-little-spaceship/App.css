@@ -31,7 +31,8 @@ form {
     "name color"
     "shape material"
     "background style"
-    "submit submit";
+    "submit submit"
+    "result result";
   gap: 16px;
   max-width: 600px;
   margin: 16px auto;
@@ -87,4 +88,8 @@ button {
   text-align: center;
   font-family: "Acme", sans-serif;
   letter-spacing: 1px;
+}
+
+form img {
+  grid-area: result;
 }

@@ -1,3 +1,4 @@
+import { useState } from "react"
 import "./App.css"
 import { useFormik } from "formik"
 
@@ -8,6 +9,8 @@ export const Spaceship = () => {
   const styles = ["illustration", "cartoonish", "pixelArt", "scifi"]
   const backgroundElements = ["nebula", "asteroids", "planets", "stars"]
 
+  const [resultUrl, setResultUrl] = useState("")
+
   const spaceshipForm = useFormik({
     initialValues: {
       spaceshipName: "",
@@ -16,10 +19,28 @@ export const Spaceship = () => {
       style: "",
       material: "",
       backgroundElements: []
+    },
+    onSubmit: async (data, formikHelpers) => {
+      console.log("Submitting form!")
+      console.log(data)
+
+      const response = await fetch("https://api.abcd.ge/spaceship", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json"
+        },
+        body: JSON.stringify(data)
+      })
+      console.log(response)
+
+      const json = await response.json()
+      console.log(json)
+      setResultUrl(json.url)
+      formikHelpers.setSubmitting(false)
     }
   })
 
-  console.log(spaceshipForm.values)
+  // console.log(spaceshipForm)
 
   // classNames for container divs:
   // name, color, shape, material, style, background
@@ -27,7 +48,7 @@ export const Spaceship = () => {
   return (
     <div>
       <h1>My Little Spaceship</h1>
-      <form>
+      <form onSubmit={spaceshipForm.handleSubmit}>
         <div className="name">
           <label htmlFor="name">Name</label>
           <input
@@ -76,11 +97,13 @@ export const Spaceship = () => {
         <div className="color">
           <label htmlFor="">Color</label>
           <div>
-            {colors.map((color) => {
+            {colors.map((col) => {
               return (
                 <button
-                  style={{ backgroundColor: color }}
-                  key={color}
+                  onClick={() => spaceshipForm.setFieldValue("color", col)}
+                  type="button"
+                  style={{ backgroundColor: col }}
+                  key={col}
                   className="color"
                 ></button>
               )
@@ -116,6 +139,11 @@ export const Spaceship = () => {
           </select>
         </div>
         <button type="submit">Create!</button>
+        {spaceshipForm.isSubmitting ? (
+          "Loading..."
+        ) : (
+          <img src={resultUrl} alt="" />
+        )}
       </form>
     </div>
   )
