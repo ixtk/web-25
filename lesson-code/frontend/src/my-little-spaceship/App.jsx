@@ -1,3 +1,4 @@
+import { useState } from "react"
 import "./App.css"
 import { useFormik } from "formik"
 
@@ -8,6 +9,8 @@ export const Spaceship = () => {
   const styles = ["illustration", "cartoonish", "pixelArt", "scifi"]
   const backgroundElements = ["nebula", "asteroids", "planets", "stars"]
 
+  const [resultUrl, setResultUrl] = useState("")
+
   const form = useFormik({
     initialValues: {
       spaceshipName: "",
@@ -17,9 +20,20 @@ export const Spaceship = () => {
       shape: "",
       style: ""
     },
-    onSubmit: (data) => {
+    onSubmit: async (data) => {
       console.log("Submitting values!")
       console.log(data)
+
+      const response = await fetch("https://api.abcd.ge/spaceship", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json"
+        },
+        body: JSON.stringify(data)
+      })
+      const json = await response.json()
+
+      setResultUrl(json.url)
     }
   })
 
@@ -41,15 +55,20 @@ export const Spaceship = () => {
         <div className="shape">
           <label>Shape</label>
           <div>
-            <label>
-              <input
-                type="radio"
-                name="shape"
-                value="saucer"
-                onChange={form.handleChange}
-              />
-              Saucer
-            </label>
+            {shapes.map((shapeText) => {
+              return (
+                <label key={shapeText}>
+                  <input
+                    type="radio"
+                    name="shape"
+                    value={shapeText}
+                    onChange={form.handleChange}
+                  />
+                  {shapeText}
+                </label>
+              )
+            })}
+            {/* 
             <label>
               <input
                 type="radio"
@@ -76,7 +95,7 @@ export const Spaceship = () => {
                 onChange={form.handleChange}
               />
               Pyramid
-            </label>
+            </label> */}
           </div>
         </div>
         <div className="background">
@@ -161,6 +180,7 @@ export const Spaceship = () => {
           </select>
         </div>
         <button type="submit">Create!</button>
+        <img src={resultUrl} alt="" />
       </form>
     </div>
   )

@@ -1,0 +1,80 @@
+@import url(https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css);
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+
+:root {
+  --pico-form-element-spacing-vertical: 5px;
+  --pico-form-element-spacing-horizontal: 15px;
+  --pico-spacing: 0px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  max-width: 900px;
+  margin: 32px auto;
+  font-weight: bold;
+}
+
+.container {
+  display: flex;
+  gap: 32px;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+}
+
+.result-container {
+  flex: 1;
+}
+
+.meme {
+  position: relative;
+  font-family: "Anton", serif;
+  letter-spacing: 1px;
+}
+
+.meme img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.top-text,
+.bottom-text {
+  position: absolute;
+  margin: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px 2px black;
+  font-size: 1.2em;
+  text-transform: uppercase;
+}
+
+label {
+  font-size: smaller;
+}
+
+.top-text {
+  top: 8px;
+}
+
+.bottom-text {
+  bottom: 8px;
+}
+
+.color {
+  max-width: 100px;
+}
+
+button {
+  width: 100%;
+  margin-top: 16px;
+}
