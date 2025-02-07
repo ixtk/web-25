@@ -1,12 +1,12 @@
 import { useState } from "react"
 import "./App.css"
 import { useFormik } from "formik"
-import { object, string } from "yup"
+import { object, string, array } from "yup"
 
 export const Spaceship = () => {
   const shapes = ["saucer", "rocket", "sphere", "pyramid"]
   const materials = ["crystal", "plastic", "glass", "paper"]
-  const colors = ["red", "blue", "purple", "orange"]
+  const colors = ["red", "blue", "purple", "orange", "cornflowerblue"]
   const styles = ["illustration", "cartoonish", "pixelArt", "scifi"]
   const backgroundElements = ["nebula", "asteroids", "planets", "stars"]
 
@@ -14,6 +14,11 @@ export const Spaceship = () => {
 
   const formSchema = object({
     spaceshipName: string().min(4).required(),
+    shape: string().min(4).required(),
+    color: string().min(4).required(),
+    style: string().min(4).required(),
+    material: string().min(4).required(),
+    backgroundElements: array().of(string().min(3))
   })
 
   const spaceshipForm = useFormik({
@@ -46,7 +51,7 @@ export const Spaceship = () => {
     }
   })
 
-  console.log("ERRORS:", spaceshipForm.errors)
+  // console.log("ERRORS:", spaceshipForm.errors)
 
   // classNames for container divs:
   // name, color, shape, material, style, background
@@ -83,6 +88,7 @@ export const Spaceship = () => {
                 </label>
               )
             })}
+            <span style={{ color: "red" }}>{spaceshipForm.errors.shape}</span>
           </div>
         </div>
         <div className="background">
@@ -101,6 +107,9 @@ export const Spaceship = () => {
                 </label>
               )
             })}
+            <span style={{ color: "red" }}>
+              {spaceshipForm.errors.backgroundElements}
+            </span>
           </div>
         </div>
         <div className="color">
@@ -118,6 +127,7 @@ export const Spaceship = () => {
               )
             })}
           </div>
+          <span style={{ color: "red" }}>{spaceshipForm.errors.color}</span>
         </div>
         <div className="material">
           <label>Material</label>
@@ -135,6 +145,10 @@ export const Spaceship = () => {
                 </label>
               )
             })}
+
+            <span style={{ color: "red" }}>
+              {spaceshipForm.errors.material}
+            </span>
           </div>
         </div>
         <div className="style">
@@ -146,6 +160,7 @@ export const Spaceship = () => {
             <option value="pixelArt">Pixel Art</option>
             <option value="scifi">Sci-fi</option>
           </select>
+          <span style={{ color: "red" }}>{spaceshipForm.errors.style}</span>
         </div>
         <button type="submit">Create!</button>
         {spaceshipForm.isSubmitting ? (
