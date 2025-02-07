@@ -1,6 +1,7 @@
 import { useState } from "react"
 import "./App.css"
 import { useFormik } from "formik"
+import { object, string } from "yup"
 
 export const Spaceship = () => {
   const shapes = ["saucer", "rocket", "sphere", "pyramid"]
@@ -11,6 +12,10 @@ export const Spaceship = () => {
 
   const [resultUrl, setResultUrl] = useState("")
 
+  const formSchema = object({
+    spaceshipName: string().min(4).required(),
+  })
+
   const spaceshipForm = useFormik({
     initialValues: {
       spaceshipName: "",
@@ -20,6 +25,7 @@ export const Spaceship = () => {
       material: "",
       backgroundElements: []
     },
+    validationSchema: formSchema,
     onSubmit: async (data, formikHelpers) => {
       console.log("Submitting form!")
       console.log(data)
@@ -40,7 +46,7 @@ export const Spaceship = () => {
     }
   })
 
-  // console.log(spaceshipForm)
+  console.log("ERRORS:", spaceshipForm.errors)
 
   // classNames for container divs:
   // name, color, shape, material, style, background
@@ -57,6 +63,9 @@ export const Spaceship = () => {
             name="spaceshipName"
             onChange={spaceshipForm.handleChange}
           />
+          <span style={{ color: "red" }}>
+            {spaceshipForm.errors.spaceshipName}
+          </span>
         </div>
         <div className="shape">
           <label>Shape</label>
