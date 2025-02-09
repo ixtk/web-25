@@ -5,7 +5,8 @@ import { createRoot } from "react-dom/client"
 // import { FlightsTable } from "./hw-5-flights-table/App"
 // import { FigurineCreator } from "./hw-7-figurine-creator/App";
 // import { OneWayChat } from "./hw-8-one-way-chat/App";
-import { GameSettings } from "./hw-9-game-settings/App"
+// import { GameSettings } from "./hw-9-game-settings/App"
+import { MemeGenerator } from "./hw-10-meme-creator/App"
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -14,6 +15,7 @@ createRoot(document.getElementById("root")).render(
     {/* <JobListingsConditionals /> */}
     {/* <OneWayChat /> */}
     {/* <FigurineCreator /> */}
-    <GameSettings />
+    {/* <GameSettings /> */}
+    <MemeGenerator />
   </StrictMode>
 )
