@@ -1,6 +1,7 @@
 import { useState } from "react"
 import "./App.css"
 import { useFormik } from "formik"
+import {string, object} from "yup"
 
 export const Spaceship = () => {
   const shapes = ["saucer", "rocket", "sphere", "pyramid"]
@@ -20,6 +21,9 @@ export const Spaceship = () => {
       shape: "",
       style: ""
     },
+    validationSchema: object({
+      spaceshipName: string().min(3).required()
+    }),
     onSubmit: async (data) => {
       console.log("Submitting values!")
       console.log(data)
@@ -37,7 +41,7 @@ export const Spaceship = () => {
     }
   })
 
-  // console.log(form.values)
+  console.log(form.errors)
 
   return (
     <div>
@@ -51,6 +55,7 @@ export const Spaceship = () => {
             placeholder="Enter spaceship name"
             onChange={form.handleChange}
           />
+          <span style={{color: 'red'}}>{form.errors.spaceshipName}</span>
         </div>
         <div className="shape">
           <label>Shape</label>
