@@ -1,47 +1,61 @@
-import { useState } from "react"
-import "./App.css"
-import { useFormik } from "formik"
-import {string, object} from "yup"
+import { useState } from "react";
+import "./App.css";
+import { useFormik } from "formik";
+import { string, object, array } from "yup";
 
 export const Spaceship = () => {
-  const shapes = ["saucer", "rocket", "sphere", "pyramid"]
-  const materials = ["crystal", "plastic", "glass", "paper"]
-  const colors = ["red", "blue", "purple", "orange"]
-  const styles = ["illustration", "cartoonish", "pixelArt", "scifi"]
-  const backgroundElements = ["nebula", "asteroids", "planets", "stars"]
+  const shapes = ["saucer", "rocket", "sphere", "pyramid"];
+  const materials = ["crystal", "plastic", "glass", "paper"];
+  const colors = ["red", "blue", "purple", "orange"];
+  const styles = ["illustration", "cartoonish", "pixelArt", "scifi"];
+  const backgroundElements = ["nebula", "asteroids", "planets", "stars"];
 
-  const [resultUrl, setResultUrl] = useState("")
+  const [resultUrl, setResultUrl] = useState("");
 
   const form = useFormik({
     initialValues: {
       spaceshipName: "",
       color: "",
       material: "",
+      // optional, array of string of min 3 characters
       backgroundElements: [],
       shape: "",
-      style: ""
+      style: "",
     },
     validationSchema: object({
-      spaceshipName: string().min(3).required()
+      spaceshipName: string()
+        .min(3, "მინიმუმ 3 სიმბოლო")
+        .required("აუცილებელი ველი"),
+      color: string().min(3).required(),
+      material: string().min(4).max(20).required(),
+      shape: string().min(3).required(),
+      style: string().min(4).max(20).required(),
+      backgroundElements: array().of(string().min(3)).optional(),
     }),
     onSubmit: async (data) => {
-      console.log("Submitting values!")
-      console.log(data)
+      console.log("Submitting values!");
+      console.log(data);
 
       const response = await fetch("https://api.abcd.ge/spaceship", {
         method: "POST",
         headers: {
-          "content-type": "application/json"
+          "content-type": "application/json",
         },
-        body: JSON.stringify(data)
-      })
-      const json = await response.json()
+        body: JSON.stringify(data),
+      });
+      const json = await response.json();
 
-      setResultUrl(json.url)
-    }
-  })
+      setResultUrl(json.url);
+    },
+  });
 
-  console.log(form.errors)
+  // form.values
+  // form.errors
+  // form.isSubmitting
+  
+  // form.touched
+
+  console.log(form.touched);
 
   return (
     <div>
@@ -54,8 +68,9 @@ export const Spaceship = () => {
             name="spaceshipName"
             placeholder="Enter spaceship name"
             onChange={form.handleChange}
+            onBlur={form.handleBlur}
           />
-          <span style={{color: 'red'}}>{form.errors.spaceshipName}</span>
+          <span style={{ color: "red" }}>{form.errors.spaceshipName}</span>
         </div>
         <div className="shape">
           <label>Shape</label>
@@ -71,8 +86,9 @@ export const Spaceship = () => {
                   />
                   {shapeText}
                 </label>
-              )
+              );
             })}
+            <span style={{ color: "red" }}>{form.errors.shape}</span>
             {/* 
             <label>
               <input
@@ -143,6 +159,7 @@ export const Spaceship = () => {
               Stars
             </label>
           </div>
+          <span style={{ color: "red" }}>{form.errors.backgroundElements}</span>
         </div>
         <div className="color">
           <label>Color</label>
@@ -155,8 +172,9 @@ export const Spaceship = () => {
                 style={{ backgroundColor: col }}
                 key={col}
               ></button>
-            )
+            );
           })}
+          <span style={{ color: "red" }}>{form.errors.color}</span>
         </div>
         <div className="material">
           <label htmlFor="">Material</label>
@@ -171,8 +189,9 @@ export const Spaceship = () => {
                 />
                 {material}
               </label>
-            )
+            );
           })}
+          <span style={{ color: "red" }}>{form.errors.material}</span>
         </div>
         <div className="style">
           <label htmlFor="">Art style</label>
@@ -183,10 +202,16 @@ export const Spaceship = () => {
             <option value="scifi">Sci-Fi</option>
             <option value="pixelArt">Pixel art</option>
           </select>
+          <span style={{ color: "red" }}>{form.errors.style}</span>
         </div>
-        <button type="submit">Create!</button>
-        <img src={resultUrl} alt="" />
+        {/* form.isSubmitting, disabled */}
+        <button disabled={form.isSubmitting} type="submit">
+          {form.isSubmitting ? "Loading..." : "Create!"}
+        </button>
+        {form.isSubmitting
+          ? "Loading..."
+          : resultUrl && <img src={resultUrl} alt="" />}
       </form>
     </div>
-  )
-}
+  );
+};
