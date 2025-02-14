@@ -7,7 +7,8 @@ import { createRoot } from "react-dom/client"
 // import { FormsPlayground } from "./forms-playground/App"
 // import { ProfileControlledInputs } from "./forms/App"
 import "./App.css"
-import { Spaceship } from "./my-little-spaceship/App"
+// import { Spaceship } from "./my-little-spaceship/App"
+import { ProductsPlayground } from "./products-playground/App"
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -15,6 +16,7 @@ createRoot(document.getElementById("root")).render(
     {/* <FormsPlayground /> */}
     {/* <MovieWatchlist /> */}
     {/* <ProfileWithoutStates /> */}
-    <Spaceship />
+    {/* <Spaceship /> */}
+    <ProductsPlayground />
   </StrictMode>
 )
