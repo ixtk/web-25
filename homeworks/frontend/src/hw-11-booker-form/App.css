@@ -1,0 +1,43 @@
+@import url(https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css);
+
+:root {
+  --pico-form-element-spacing-vertical: 5px;
+  --pico-form-element-spacing-horizontal: 15px;
+  --pico-spacing: 0;
+}
+
+.error {
+  color: rgb(180, 0, 0);
+  font-size: smaller;
+}
+
+label {
+  margin-bottom: 2px;
+}
+
+.container {
+  max-width: 600px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.terms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.terms > div {
+  width: 100%;
+}
+
+.reserve-btn {
+  margin-top: 16px;
+}
