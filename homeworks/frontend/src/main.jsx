@@ -6,7 +6,8 @@ import { createRoot } from "react-dom/client"
 // import { FigurineCreator } from "./hw-7-figurine-creator/App";
 // import { OneWayChat } from "./hw-8-one-way-chat/App";
 // import { GameSettings } from "./hw-9-game-settings/App"
-import { MemeGenerator } from "./hw-10-meme-creator/App"
+// import { MemeGenerator } from "./hw-10-meme-creator/App"
+import { BookerForm } from "./hw-11-booker-form/App"
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -16,6 +17,7 @@ createRoot(document.getElementById("root")).render(
     {/* <OneWayChat /> */}
     {/* <FigurineCreator /> */}
     {/* <GameSettings /> */}
-    <MemeGenerator />
+    {/* <MemeGenerator /> */}
+    <BookerForm />
   </StrictMode>
 )

@@ -4,10 +4,12 @@ import { useState } from "react";
 export function ProductsPlayground() {
   const [productList, setProductList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("")
+  const [error, setError] = useState("");
 
-  const getProducts = () => {
+  const getProducts = async () => {
     setIsLoading(true);
+
+    /*
     fetch("https://fakestoreapi.in/api/products")
       .then((response) => {
         return response.json();
@@ -21,6 +23,18 @@ export function ProductsPlayground() {
         setIsLoading(false)
         console.log("ERROR:", error.message);
       });
+      */
+
+    try {
+      const response = await fetch("https://fakestoreapi.in/api/products");
+      const json = await response.json();
+      setProductList(json.products);
+      setIsLoading(false);
+    } catch (error) {
+      setError(error.message);
+      setIsLoading(false);
+      console.log("ERROR:", error.message);
+    }
   };
 
   return (
@@ -38,7 +52,7 @@ export function ProductsPlayground() {
         </ul>
       )}
 
-      <p style={{color: 'red'}}>{error}</p>
+      <p style={{ color: "red" }}>{error}</p>
     </div>
   );
 }
