@@ -10,8 +10,8 @@ import "./App.css"
 // import { FormsPlayground } from "./forms-playground/App"
 // import { ProfileControlledInputs } from "./forms/App"
 // import { Spaceship } from "./my-little-spaceship/App"
-import { Spaceship as SpaceshipWithComponents } from "./my-little-spaceship/AppWithComponents"
-// import { ProductsPlayground } from "./products-playground/App"
+// import { Spaceship as SpaceshipWithComponents } from "./my-little-spaceship/AppWithComponents"
+import { Store } from "./store/App"
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -19,7 +19,7 @@ createRoot(document.getElementById("root")).render(
     {/* <FormsPlayground /> */}
     {/* <MovieWatchlist /> */}
     {/* <ProfileWithoutStates /> */}
-    <SpaceshipWithComponents />
-    {/* <ProductsPlayground /> */}
+    {/* <SpaceshipWithComponents /> */}
+    <Store />
   </StrictMode>
 )
