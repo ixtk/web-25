@@ -6,6 +6,8 @@ import { createRoot } from "react-dom/client"
 // import { ProfileUncontrolledInputs } from "./forms/AppWithoutState"
 import "./App.css"
 import { Spaceship } from "./my-little-spaceship/App"
+// import { Spaceship as SpaceshipWithComponents } from "./my-little-spaceship/AppWithComponents"
+// import { Store } from "./store/App"
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
