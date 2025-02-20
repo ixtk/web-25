@@ -52,7 +52,7 @@ export const Spaceship = () => {
   // form.values
   // form.errors
   // form.isSubmitting
-  
+
   // form.touched
 
   console.log(form.touched);
@@ -83,6 +83,7 @@ export const Spaceship = () => {
                     name="shape"
                     value={shapeText}
                     onChange={form.handleChange}
+                    onBlur={form.handleBlur}
                   />
                   {shapeText}
                 </label>
@@ -128,6 +129,7 @@ export const Spaceship = () => {
                 value="nebulaClouds"
                 name="backgroundElements"
                 onChange={form.handleChange}
+                onBlur={form.handleBlur}
               />
               Nebula cluds
             </label>
@@ -137,6 +139,7 @@ export const Spaceship = () => {
                 value="asteroidFields"
                 name="backgroundElements"
                 onChange={form.handleChange}
+                onBlur={form.handleBlur}
               />
               Asteroid fields
             </label>
@@ -146,6 +149,7 @@ export const Spaceship = () => {
                 value="planetsVisible"
                 name="backgroundElements"
                 onChange={form.handleChange}
+                onBlur={form.handleBlur}
               />
               Planets visible
             </label>
@@ -155,6 +159,7 @@ export const Spaceship = () => {
                 value="stars"
                 name="backgroundElements"
                 onChange={form.handleChange}
+                onBlur={form.handleBlur}
               />
               Stars
             </label>
@@ -169,6 +174,8 @@ export const Spaceship = () => {
                 className="color"
                 onClick={() => form.setFieldValue("color", col)}
                 type="button"
+                name="color"
+                onBlur={form.handleBlur}
                 style={{ backgroundColor: col }}
                 key={col}
               ></button>
@@ -186,6 +193,7 @@ export const Spaceship = () => {
                   name="material"
                   value={material}
                   onChange={form.handleChange}
+                  onBlur={form.handleBlur}
                 />
                 {material}
               </label>
@@ -195,7 +203,12 @@ export const Spaceship = () => {
         </div>
         <div className="style">
           <label htmlFor="">Art style</label>
-          <select defaultValue="" name="style" onChange={form.handleChange}>
+          <select
+            defaultValue=""
+            name="style"
+            onBlur={form.handleBlur}
+            onChange={form.handleChange}
+          >
             <option value="">---</option>
             <option value="illustration">Illustration</option>
             <option value="cartoonish">Cartoonish</option>
