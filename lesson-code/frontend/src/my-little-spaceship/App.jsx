@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import { useFormik } from "formik";
 import { string, object, array } from "yup";
@@ -55,7 +55,9 @@ export const Spaceship = () => {
 
   // form.touched
 
-  console.log(form.touched);
+  useEffect(() => {
+    console.log(form.touched);
+  }, [form.touched]);
 
   return (
     <div>
@@ -70,7 +72,9 @@ export const Spaceship = () => {
             onChange={form.handleChange}
             onBlur={form.handleBlur}
           />
-          <span style={{ color: "red" }}>{form.errors.spaceshipName}</span>
+          {form.touched.spaceshipName && (
+            <span style={{ color: "red" }}>{form.errors.spaceshipName}</span>
+          )}
         </div>
         <div className="shape">
           <label>Shape</label>
@@ -89,7 +93,9 @@ export const Spaceship = () => {
                 </label>
               );
             })}
-            <span style={{ color: "red" }}>{form.errors.shape}</span>
+            {form.touched.shape && form.errors.shape && (
+              <span style={{ color: "red" }}>{form.errors.shape}</span>
+            )}
             {/* 
             <label>
               <input
@@ -121,7 +127,7 @@ export const Spaceship = () => {
           </div>
         </div>
         <div className="background">
-          <label htmlFor="">Background elements</label>
+          <label>Background elements</label>
           <div>
             <label>
               <input
@@ -164,7 +170,11 @@ export const Spaceship = () => {
               Stars
             </label>
           </div>
-          <span style={{ color: "red" }}>{form.errors.backgroundElements}</span>
+          {form.touched.backgroundElements && (
+            <span style={{ color: "red" }}>
+              {form.errors.backgroundElements}
+            </span>
+          )}
         </div>
         <div className="color">
           <label>Color</label>
@@ -181,7 +191,9 @@ export const Spaceship = () => {
               ></button>
             );
           })}
-          <span style={{ color: "red" }}>{form.errors.color}</span>
+          {form.touched.color && (
+            <span style={{ color: "red" }}>{form.errors.color}</span>
+          )}
         </div>
         <div className="material">
           <label htmlFor="">Material</label>
@@ -199,7 +211,9 @@ export const Spaceship = () => {
               </label>
             );
           })}
-          <span style={{ color: "red" }}>{form.errors.material}</span>
+          {form.touched.material && (
+            <span style={{ color: "red" }}>{form.errors.material}</span>
+          )}
         </div>
         <div className="style">
           <label htmlFor="">Art style</label>
@@ -215,7 +229,9 @@ export const Spaceship = () => {
             <option value="scifi">Sci-Fi</option>
             <option value="pixelArt">Pixel art</option>
           </select>
-          <span style={{ color: "red" }}>{form.errors.style}</span>
+          {form.touched.style && (
+            <span style={{ color: "red" }}>{form.errors.style}</span>
+          )}
         </div>
         {/* form.isSubmitting, disabled */}
         <button disabled={form.isSubmitting} type="submit">
