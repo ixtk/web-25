@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import { string, object, array } from "yup";
 
 export const Spaceship = () => {
+  // "on" vs string values
   const shapes = ["saucer", "rocket", "sphere", "pyramid"];
   const materials = ["crystal", "plastic", "glass", "paper"];
   const colors = ["red", "blue", "purple", "orange"];
@@ -51,11 +52,11 @@ export const Spaceship = () => {
 
   // form.values
   // form.errors
+  // form.touched
   // form.isSubmitting
 
-  // form.touched
-
   useEffect(() => {
+    // only logs this when form.touched changes...
     console.log(form.touched);
   }, [form.touched]);
 
@@ -67,10 +68,12 @@ export const Spaceship = () => {
           <label htmlFor="name">Name</label>
           <input
             type="text"
-            name="spaceshipName"
             placeholder="Enter spaceship name"
-            onChange={form.handleChange}
-            onBlur={form.handleBlur}
+            // name="spaceshipName"
+            // value={form.values.spaceshipName}
+            // onChange={form.handleChange}
+            // onBlur={form.handleBlur}
+            {...form.getFieldProps('spaceshipName')}
           />
           {form.touched.spaceshipName && (
             <span style={{ color: "red" }}>{form.errors.spaceshipName}</span>
@@ -85,6 +88,7 @@ export const Spaceship = () => {
                   <input
                     type="radio"
                     name="shape"
+                    // "on" vs string values
                     value={shapeText}
                     onChange={form.handleChange}
                     onBlur={form.handleBlur}
