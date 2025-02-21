@@ -43,9 +43,12 @@ export function Store() {
     return (
       <Product
         key={product.id}
+        id={product.id}
         title={product.title}
         imageUrl={product.image}
         price={product.price}
+        productList={productList}
+        setProductList={setProductList}
       />
     )
   })
