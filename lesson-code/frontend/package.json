@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "server": "json-server --watch db-small.json"
+    "server": "json-server --watch db-small.json --port 3333"
   },
   "dependencies": {
     "formik": "^2.4.6",

@@ -87,31 +87,7 @@
       "category": "audio"
     },
     {
-      "id": 9,
-      "title": "Amkette EvoFox Elite Ops Wireless Gamepad for Android TV | Google TV | 8+ Hours of Play Time | Zero Lag Connectivity Upto 12 Feets | USB Extender for TV Included | - Dusk Grey",
-      "image": "https://storage.googleapis.com/fir-auth-1c3bc.appspot.com/1694100438525-51Prg4Smx-L._SL1500_.jpg",
-      "price": 18,
-      "description": "The EvoFox Elite Ops Wireless Gamepad with Type C Charging is the ideal Android TV Gamepad. With all Android TVs supporting at least basic Gaming, a Gamepad at home is a must. Use the provided USB Extender Cable on your TV to ensure optimal wireless performance.\r\nThis Wireless Controller also supports Windows with X input and D input modes, and PS3s. It automatically detects and changes the gamepad mode based on your system. Simply Plug and Play!\r\nThe Elite Ops features Digital Triggers (not Analog), Accurate 360 degree concave thumbsticks, a Precise 8 way floating D-Pad. The gamepad also features dual rumble Vibration motors (for PC and PS3 only) and an easy to use Turbo Mode.\r\nThe gamepad comes with a Type C charging port and the 400mAh Rechargeable battery ensures 8 hours of non stop gameplay. The ergonomic and robust design with anti-sweat matte finish makes it easy on your hands, but tough on your enemies.",
-      "brand": "Amkette",
-      "model": "Woburn II Bluetooth",
-      "color": "gray",
-      "category": "gaming",
-      "discount": 3
-    },
-    {
-      "id": 10,
-      "title": "Samsung Galaxy S22 5G (Phantom White, 8GB RAM, 128GB Storage) with No Cost EMI/Additional Exchange Offers",
-      "image": "https://storage.googleapis.com/fir-auth-1c3bc.appspot.com/1691074519203-galaxy S22 5G.jpg",
-      "price": 760,
-      "description": "Pro-grade Camera that lets you make your nights epic with Nightography: It’s our brightest innovation yet. The sensor pulls in more light, the Super Clear Glass dials down lens flare, and fast-acting AI delivers near-instant intelligent processing.\r\nVisionBooster outshines the sun: Stunning 120Hz Dynamic AMOLED 2X display is crafted specifically for high outdoor visibility, keeping the view clear in bright daylight.\r\n4nm processor, our fastest chip yet: Our fastest, most powerful chip ever. That means, a faster CPU and GPU compared to Galaxy S21 Ultra. It’s an epic leap for smartphone technology.\r\nSleek design in a range of colors lets you express yourself how you like. The slim bezels flow into a symmetrical polished frame for an expansive, balanced display. Corning Gorilla Glass Victus+ on the screen and back panels.",
-      "brand": "samsung",
-      "model": "Samsung Galaxy S22 5G",
-      "color": "White",
-      "category": "mobile",
-      "discount": 29
-    },
-    {
-      "id": 11,
+      "id": "11",
       "title": "Samsung Galaxy S22 Ultra 5G (Burgundy, 12GB, 256GB Storage) ",
       "image": "https://storage.googleapis.com/fir-auth-1c3bc.appspot.com/1691074776147-galaxy S22 ultra 5G.jpg",
       "price": 1147,
@@ -124,7 +100,7 @@
       "onSale": true
     },
     {
-      "id": 12,
+      "id": "12",
       "title": "Poco by Xiaomi F1 Steel Blue, 6GB RAM, 64GB Storage",
       "image": "https://storage.googleapis.com/fir-auth-1c3bc.appspot.com/1691078463674-poco f1.jpg",
       "price": 132,
@@ -136,7 +112,7 @@
       "popular": true
     },
     {
-      "id": 13,
+      "id": "13",
       "title": "Samsung Galaxy M14 5G (Smoky Teal, 6GB, 128GB Storage)",
       "image": "https://storage.googleapis.com/fir-auth-1c3bc.appspot.com/1691075307831-galaxy M14 5G.jpg",
       "price": 187,
@@ -148,20 +124,7 @@
       "discount": 11
     },
     {
-      "id": 46,
-      "title": "Redmi 80 cm (32 inches) HD Ready Smart LED Fire TV L32R8-FVIN (Black)",
-      "image": "https://storage.googleapis.com/fir-auth-1c3bc.appspot.com/1694154515879-819Lw2PE8tL._SL1500_.jpg",
-      "price": 138,
-      "description": "Resolution: HD Ready (1366x768) | Refresh Rate: 60 hertz | 178 wide viewing angle\r\nConnectivity: Dual Band Wi-Fi (2.4 GHz/ 5 GHz) | 2 HDMI ports to connect set top box, gaming consoles, DVD or Blu-ray Players | 2 USB ports to connect hard drives and other USB devices | ARC | Bluetooth 5.0 | Ethernet | 3.5mm earphone Jack\r\nSound: 20 Watts Output | Dolby Audio | DTS Virtual: X | DTS-HD\r\nSmart TV Features : Fire TV Built-In | Supported Apps: Prime Video | Netflix | Disney+ Hotstar | YouTube | 12000+ apps from App Store | Voice Remote with Alexa | DTH Set-Top Box Integration to switch between DTH TV Channels and OTT apps from home screen | Display Mirroring - Airplay & Miracast | Quad core ARM Cortex-A35 CPU @ 2.0GHz | 1GB RAM + 8GB Internal Storage\r\nDisplay: Metal bezel-less Screen | Vivid Picture Engine\r\nRecommendation: We recommend using 1.5V Alkaline AAA Batteries in your Alexa Voice Remote for a steady performance.",
-      "brand": "redmi",
-      "model": "L32R8",
-      "color": "black",
-      "category": "tv",
-      "onSale": true,
-      "discount": 7
-    },
-    {
-      "id": 47,
+      "id": "47",
       "title": "Samsung 108 cm (43 inches) Crystal iSmart 4K Ultra HD Smart LED TV UA43CUE60AKLXL (Black)",
       "image": "https://storage.googleapis.com/fir-auth-1c3bc.appspot.com/1694154827301-81+JXgPUDLL._SL1500_.jpg",
       "price": 396,
@@ -173,7 +136,7 @@
       "discount": 9
     },
     {
-      "id": 48,
+      "id": "48",
       "title": "Mi 125 cm (50 inches) X Series 4K Ultra HD Smart Android LED TV L50M7-A2IN (Black)",
       "image": "https://storage.googleapis.com/fir-auth-1c3bc.appspot.com/1694155239807-81UT46-gwRL._SL1500_.jpg",
       "price": 384,
@@ -186,7 +149,7 @@
       "discount": 11
     },
     {
-      "id": 49,
+      "id": "49",
       "title": " Acer 126 cm (50 inches) V Series 4K Ultra HD Smart QLED Google TV AR50GR2851VQD (Black)",
       "image": "https://storage.googleapis.com/fir-auth-1c3bc.appspot.com/1694155440745-619--Jabh2L._SL1048_.jpg",
       "price": 444,
