@@ -7,13 +7,14 @@ import { createRoot } from "react-dom/client"
 import "./App.css"
 // import { Spaceship } from "./my-little-spaceship/App"
 // import { Spaceship as SpaceshipWithComponents } from "./my-little-spaceship/AppWithComponents"
-import { Store } from "./store/App"
+// import { Store } from "./store/App"
+import { StarWarsFetch } from "./star-wars-fetch/App"
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     {/* <MovieWatchlist /> */}
     {/* <ProfileUncontrolledInputs /> */}
     {/* <Spaceship /> */}
-    <Store />
+    <StarWarsFetch />
   </StrictMode>
 )
