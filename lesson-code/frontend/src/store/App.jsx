@@ -1,6 +1,7 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Product } from "./Product";
+import { Routes, Route } from "react-router";
 
 export function Store() {
   const [productList, setProductList] = useState([]);
@@ -38,6 +39,10 @@ export function Store() {
       console.log("ERROR:", error.message);
     }
   };
+
+  useEffect(() => {
+    getProducts()
+  }, [])
 
   const productListElements = productList.map((product) => {
     return (
@@ -79,19 +84,22 @@ export function Store() {
   };
 
   return (
-    <div>
-      <h1>Store Playground</h1>
-      <button onClick={getProducts}>Get all products</button>
-      <button style={{ marginLeft: "8px" }} onClick={createProduct}>
-        Create new
-      </button>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+    <Routes>
+      <Route index element={<div>
+        <h1>Store Playground</h1>
+        {/* <button onClick={getProducts}>Get all products</button> */}
+        <button style={{ marginLeft: "8px" }} onClick={createProduct}>
+          Create new
+        </button>
+        {error && <p style={{ color: "red" }}>{error}</p>}
 
-      {isLoading ? (
-        <div>Loading...</div>
-      ) : (
-        <div className="products-container">{productListElements}</div>
-      )}
-    </div>
+        {isLoading ? (
+          <div>Loading...</div>
+        ) : (
+          <div className="products-container">{productListElements}</div>
+        )}
+      </div>} 
+      />
+    </Routes>
   );
 }
