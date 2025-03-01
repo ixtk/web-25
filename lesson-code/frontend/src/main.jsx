@@ -13,7 +13,7 @@ import "./App.css"
 // import { Spaceship as SpaceshipWithComponents } from "./my-little-spaceship/AppWithComponents"
 import { Store } from "./store/App"
 // import { StarWarsFetch } from "./star-wars-fetch/App"
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router";
 
 
 createRoot(document.getElementById("root")).render(

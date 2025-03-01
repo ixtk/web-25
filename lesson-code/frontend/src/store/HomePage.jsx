@@ -86,7 +86,7 @@ export const HomePage = () => {
     <div>
       <h1>Store Playground</h1>
       {/* <button onClick={getProducts}>Get all products</button> */}
-      <button style={{ marginLeft: "8px" }} onClick={createProduct}>
+      <button onClick={createProduct}>
         Create new
       </button>
       {error && <p style={{ color: "red" }}>{error}</p>}
