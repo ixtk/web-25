@@ -1,7 +1,6 @@
 import { StrictMode } from "react"
 import { createRoot } from "react-dom/client"
 
-import "./App.css"
 
 // import { MovieWatchlist } from "./movie-watchlist/App"
 // import { ProfileControlledInputs } from "./forms/AppWithOneState"
@@ -11,9 +10,10 @@ import "./App.css"
 // import { ProfileControlledInputs } from "./forms/App"
 // import { Spaceship } from "./my-little-spaceship/App"
 // import { Spaceship as SpaceshipWithComponents } from "./my-little-spaceship/AppWithComponents"
-import { Store } from "./store/App"
-// import { StarWarsFetch } from "./star-wars-fetch/App"
-import { BrowserRouter } from "react-router";
+// import { Store } from "./store/App"
+import { StarWarsFetch } from "./star-wars-fetch/App"
+// import { BrowserRouter } from "react-router";
+import "./App.css"
 
 
 createRoot(document.getElementById("root")).render(
@@ -23,9 +23,9 @@ createRoot(document.getElementById("root")).render(
     {/* <MovieWatchlist /> */}
     {/* <ProfileWithoutStates /> */}
     {/* <SpaceshipWithComponents /> */}
-    <BrowserRouter>
+    {/* <BrowserRouter>
       <Store />
-    </BrowserRouter>
-    {/* <StarWarsFetch /> */}
+    </BrowserRouter> */}
+    <StarWarsFetch />
   </StrictMode>
 )
