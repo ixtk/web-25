@@ -4,13 +4,24 @@ import { useParams } from "react-router";
 export const ProductPage = () => {
   const { id } = useParams();
   const [product, setProduct] = useState({});
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const response = await fetch(`http://localhost:3000/products/${id}`);
-      const json = await response.json();
+      try {
+        const response = await fetch(`http://localhost:3000/products/${id}`);
 
-      setProduct(json);
+        // if (!reponse.ok) {
+        // setError("Product not found")
+        // return
+        // }
+
+        const json = await response.json();
+
+        setProduct(json);
+      } catch (error) {
+        setError("Product not found");
+      }
     };
 
     fetchProduct();
@@ -22,33 +33,34 @@ export const ProductPage = () => {
     console.log("New price:", product.price);
 
     fetch(`http://localhost:3000/products/${id}`, {
-      method: "patch",
-      body: JSON.stringify({ price: product.price })
+      method: "PATCH",
+      body: JSON.stringify({ price: product.price }),
     }).then((response) => {
       // if (!response.ok) {
-        
       // }
       // check if request succeeded
-    })
+    });
   };
 
   return (
     <div>
-      <h2>{product.title}</h2>
+      <h2>{error ? error : product.title}</h2>
       <img src={product.image} alt="" />
-      <form onSubmit={updatePrice}>
-        <fieldset role="group">
-          <input
-            type="number"
-            value={product.price}
-            placeholder="Enter new price"
-            onChange={(event) => {
-              setProduct({ ...product, price: event.target.value });
-            }}
-          />
-          <input type="submit" value="Update" />
-        </fieldset>
-      </form>
+      {error === "" && (
+        <form onSubmit={updatePrice}>
+          <fieldset role="group">
+            <input
+              type="number"
+              value={product.price}
+              placeholder="Enter new price"
+              onChange={(event) => {
+                setProduct({ ...product, price: event.target.value });
+              }}
+            />
+            <input type="submit" value="Update" />
+          </fieldset>
+        </form>
+      )}
       <p>{product.description}</p>
     </div>
   );
