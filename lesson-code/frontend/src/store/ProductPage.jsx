@@ -1,5 +1,55 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router";
+
 export const ProductPage = () => {
+  const { id } = useParams();
+  const [product, setProduct] = useState({});
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const response = await fetch(`http://localhost:3000/products/${id}`);
+      const json = await response.json();
+
+      setProduct(json);
+    };
+
+    fetchProduct();
+  }, []);
+
+  const updatePrice = (event) => {
+    event.preventDefault();
+
+    console.log("New price:", product.price);
+
+    fetch(`http://localhost:3000/products/${id}`, {
+      method: "patch",
+      body: JSON.stringify({ price: product.price })
+    }).then((response) => {
+      // if (!response.ok) {
+        
+      // }
+      // check if request succeeded
+    })
+  };
+
   return (
-    <h1>Product</h1>
-  )
-}
+    <div>
+      <h2>{product.title}</h2>
+      <img src={product.image} alt="" />
+      <form onSubmit={updatePrice}>
+        <fieldset role="group">
+          <input
+            type="number"
+            value={product.price}
+            placeholder="Enter new price"
+            onChange={(event) => {
+              setProduct({ ...product, price: event.target.value });
+            }}
+          />
+          <input type="submit" value="Update" />
+        </fieldset>
+      </form>
+      <p>{product.description}</p>
+    </div>
+  );
+};
