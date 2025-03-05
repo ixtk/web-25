@@ -3,7 +3,7 @@ import { Product } from "./Product";
 
 export const HomePage = () => {
   const [productList, setProductList] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
 
   const getProducts = async () => {
