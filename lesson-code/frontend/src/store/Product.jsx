@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 export const Product = ({
   title,
   imageUrl,
@@ -29,7 +31,9 @@ export const Product = ({
   return (
     <div className="product">
       <img src={imageUrl} alt="" />
-      <h2>{title}</h2>
+      <h2>
+        <Link to={`/products/${id}`}>{title}</Link>
+      </h2>
       <p>${price}</p>
       <button onClick={deleteProduct}>Delete</button>
     </div>
