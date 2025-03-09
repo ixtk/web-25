@@ -16,11 +16,22 @@ const productSchema = new mongoose.Schema(
 // მოდელი, რომელსაც DB ოპერაციებისთვის გამოვიყენებთ
 const Product = mongoose.model("Product", productSchema)
 
-app.get("/", async (req, res) => {
+app.use(express.json())
+
+app.get("/products", async (req, res) => {
   const productList = await Product.find()
 
   console.log(productList)
   return res.json({ products: productList })
+})
+
+app.post("/products", async (req, res) => {
+  const productValues = req.body
+
+  const newProduct = new Product(productValues)
+  newProduct.save()
+
+  return res.json(newProduct)
 })
 
 app.listen(3333, async () => {
