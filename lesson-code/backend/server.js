@@ -52,6 +52,14 @@ app.delete("/products/:productId", async (req, res) => {
   return res.json({ "message": "ok" })
 })
 
+app.patch("/products/:productId", async (req, res) => {
+  const { productId } = req.params
+  const updatedData = req.body
+
+  const updatedProduct = await Product.findByIdAndUpdate(productId, updatedData, { new: true });
+  return res.json({ product: updatedProduct })
+})
+
 app.listen(3000, async () => {
   console.log("Running on port 3000")
   try {
