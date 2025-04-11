@@ -7,17 +7,10 @@ import { createRoot } from "react-dom/client"
 // import { OneWayChat } from "./hw-8-one-way-chat/App";
 // import { GameSettings } from "./hw-9-game-settings/App"
 // import { MemeGenerator } from "./hw-10-meme-creator/App"
-import { BookerForm } from "./hw-11-booker-form/App"
+import { DearNextVisitor } from "./hw-12-dear-next-visitor/App"
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    {/* <BlogComponent /> */}
-    {/* <FlightsTable /> */}
-    {/* <JobListingsConditionals /> */}
-    {/* <OneWayChat /> */}
-    {/* <FigurineCreator /> */}
-    {/* <GameSettings /> */}
-    {/* <MemeGenerator /> */}
-    <BookerForm />
+    <DearNextVisitor />
   </StrictMode>
 )
