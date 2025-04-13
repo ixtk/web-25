@@ -24,12 +24,17 @@ app.post("/note", async (req, res) => {
   const { content } = req.body
   if (!content) return res.status(400).json({ error: "Note cannot be empty." })
 
+  const previousNote = await Note.findOne().sort({ createdAt: -1 })
+
   await Note.create({ content })
 
-  const notes = await Note.find().sort({ createdAt: -1 }).limit(2)
+  if (previousNote === null) {
+    const fakeNote = {
+      content: "Smile :)"
+    }
 
-  // default note if there are 0 at the start
-  const previousNote = notes.length > 1 ? notes[1] : { content: "Smile :)" }
+    return res.json({ success: true, previousNote: fakeNote  })
+  }
 
   res.json({ success: true, previousNote })
 })
